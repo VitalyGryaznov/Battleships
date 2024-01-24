@@ -46,9 +46,8 @@ button {
   background-size: contain;
 }
 
-.game-container__grid-sink-ship {
+.game-container__grid-ship-sink {
   border: red 1px solid;
-  z-index: 2;
 }
 
 .game-container__grid-cell_miss:before {

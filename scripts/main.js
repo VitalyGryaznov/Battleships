@@ -30,17 +30,14 @@ function initializeGame() {
     );
     ship.classList.add("game-container__ship_sink");
 
-    // Possible improvement: mark the ship as sink on the grid
-    console.log(detail.coordinates);
-    const gridSinkShip = document.createElement("div");
-    gridSinkShip.style["grid-column"] = `${
-      detail.coordinates.columnStart + 1
-    } / ${detail.coordinates.columnEnd + 2}`;
-    gridSinkShip.style["grid-row"] = `${detail.coordinates.rowStart + 1} / ${
-      detail.coordinates.rowEnd + 2
-    }`;
-    gridSinkShip.classList.add("game-container__grid-sink-ship");
-    grid.appendChild(gridSinkShip);
+    // Mark the ship as sink on the grid
+    detail.coordinates.forEach((coordinate) => {
+      const cell = document.getElementById(
+        `cell-${coordinate[0]}-${coordinate[1]}`
+      );
+      cell.classList.add("game-container__grid-ship-sink");
+    });
+
     /* TODO: 
       - add coordinates of the ship to the sink event
       - create a grid item with grid-column and grid-row based in coordinates
@@ -137,6 +134,8 @@ function isValidCoordinates(stringCoordinate) {
 }
 
 function enterCoordinates() {
+  // Potential improvement: check if the cell was already shot and display a message
+  // For that could be used an array of already shot coordinates
   const input = document.getElementById("coordinateInput");
   const coordinates = input.value.trim().toUpperCase();
 

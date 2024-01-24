@@ -3,24 +3,9 @@ class Ship extends EventTarget {
     // Possible improvement: add validation to the coordinates
     super();
     this.squares = coordinatesList.length;
-    this.coordinates = coordinatesList.map((coordinates) =>
+    this.coordinatesList = coordinatesList;
+    this.stringCoordinatesList = coordinatesList.map((coordinates) =>
       coordinates.toString()
-    );
-    this.columnStart = Math.min(
-      coordinatesList[0][0],
-      coordinatesList[coordinatesList.length - 1][0]
-    );
-    this.columnEnd = Math.max(
-      coordinatesList[0][0],
-      coordinatesList[coordinatesList.length - 1][0]
-    );
-    this.rowStart = Math.min(
-      coordinatesList[1][1],
-      coordinatesList[coordinatesList.length - 1][1]
-    );
-    this.rowEnd = Math.max(
-      coordinatesList[1][1],
-      coordinatesList[coordinatesList.length - 1][1]
     );
     this.hitCoordinates = [];
   }
@@ -29,7 +14,9 @@ class Ship extends EventTarget {
     const coordinatesString = coordinates.toString();
     if (
       this.hitCoordinates.includes(coordinatesString) ||
-      !this.coordinates.includes(coordinatesString)
+      !this.coordinatesList.some(
+        (coordinates) => coordinates.toString() === coordinatesString
+      )
     ) {
       return;
     }
@@ -43,12 +30,7 @@ class Ship extends EventTarget {
       new CustomEvent("sink", {
         detail: {
           squares: this.squares,
-          coordinates: {
-            columnStart: this.columnStart,
-            columnEnd: this.columnEnd,
-            rowStart: this.rowStart,
-            rowEnd: this.rowEnd,
-          },
+          coordinates: this.coordinatesList,
         },
       })
     );
