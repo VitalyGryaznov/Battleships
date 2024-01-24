@@ -37,12 +37,6 @@ function initializeGame() {
       );
       cell.classList.add("game-container__grid-ship-sink");
     });
-
-    /* TODO: 
-      - add coordinates of the ship to the sink event
-      - create a grid item with grid-column and grid-row based in coordinates
-      - add a class to the grid item with the red border color
-      */
   });
   game.addEventListener("gameOver", () => {
     const gameOver = document.getElementById("game-over");
