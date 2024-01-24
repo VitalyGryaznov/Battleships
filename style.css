@@ -1,0 +1,148 @@
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  background-color: #ccddf1;
+  border-radius: 0.25rem;
+  border: 1px solid;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+@media (max-width: 480px) {
+  .game-container {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+.game-container__grid {
+  display: grid;
+  grid-template-columns: repeat(11, 2rem);
+  grid-template-rows: repeat(11, 2rem);
+  gap: 0;
+  border: 1px solid #79a4d6;
+}
+
+.game-container__grid-cell {
+  border: 0.5px solid #79a4d6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-container__grid-cell_hit {
+  background: url("./assets/cross.svg");
+  background-size: contain;
+}
+
+.game-container__grid-sink-ship {
+  border: red 1px solid;
+  z-index: 2;
+}
+
+.game-container__grid-cell_miss:before {
+  content: " \25CF";
+  font-size: 1rem;
+}
+
+.game-container__ships {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.game-container__ship {
+  border: 0.5px solid #79a4d6;
+  height: 1rem;
+  display: flex;
+}
+
+.game-container__ship_sink {
+  background-color: red;
+}
+
+.game-container__ship-cell {
+  border: 0.5px solid #79a4d6;
+  width: 100%;
+}
+
+.controls-container {
+  display: flex;
+  flex-direction: column;
+  height: 4rem;
+}
+
+.controls-container__input-container {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  height: 1.5rem;
+}
+
+.controls-container__controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem 2rem;
+}
+
+.controls-container__input {
+  height: 100%;
+  box-sizing: border-box;
+  border-radius: 0.25rem;
+  border: 1px solid;
+  width: 12rem;
+}
+
+.controls-container__button {
+  height: 100%;
+}
+
+.controls-container__error {
+  color: red;
+  font-size: 1rem;
+}
+
+.controls-container__game-over-overlay {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.controls-container__game-over-message {
+  margin-top: 3px;
+  font-size: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem 2rem;
+  color: rgb(22, 22, 109);
+  background-color: white;
+  width: fit-content;
+  height: fit-content;
+  padding: 3rem;
+}
+
+.controls-container__play-again-button {
+  height: 2rem;
+}
+
+.hidden {
+  display: none;
+}

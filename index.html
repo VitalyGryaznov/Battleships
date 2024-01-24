@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Battleship</title>
+  </head>
+  <body>
+    <h1>Battleship</h1>
+    <main>
+      <div class="controls-container">
+        <div class="controls-container__controls" id="controls">
+          <div class="controls-container__input-container">
+            <input
+              tabindex="0"
+              onkeydown="handleKeyDown(event)"
+              class="controls-container__input"
+              type="text"
+              id="coordinateInput"
+              placeholder="Enter coordinates (e.g., A1)"
+            />
+            <button
+              onclick="enterCoordinates()"
+              class="controls-container__button"
+            >
+              Shoot
+            </button>
+          </div>
+          <span
+            class="controls-container__error hidden"
+            id="validation-error"
+            role="alert"
+            aria-live="assertive"
+          >
+            Please enter valid coordinates or click on a cell
+          </span>
+        </div>
+      </div>
+      <div class="game-container">
+        <div class="game-container__grid" id="grid"></div>
+        <div>
+          <h3>ships</h3>
+          <div class="game-container__ships" id="ships"></div>
+        </div>
+      </div>
+      <div class="controls-container__game-over-overlay hidden" id="game-over">
+        <div class="controls-container__game-over-message">
+          <span>You win!</span>
+          <button
+            class="controls-container__play-again-button"
+            onclick="resetGame()"
+          >
+            Play again
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <script src="scripts/ship.js"></script>
+    <script src="scripts/game.js"></script>
+    <script src="scripts/main.js"></script>
+  </body>
+</html>
